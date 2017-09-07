@@ -105,12 +105,24 @@ gulp.task('browserSync', function() {
 
 gulp.task('build', function () {
     gulp.src([
-        'index.html',
-        'css/*',
-        'js/*',
-        'img/*'
-    ]).pipe(gulp.dest(''))
-})
+        'index.html'
+      ]).pipe(gulp.dest('../capstone-build/public'));
+    gulp.src([
+        'css/*'
+    ]).pipe(gulp.dest('../capstone-build/public/css'));
+    gulp.src([
+        'js/*'
+    ]).pipe(gulp.dest('../capstone-build/public/js'));
+    gulp.src([
+        'img/*',
+        'img/**/*'
+    ]).pipe(gulp.dest('../capstone-build/public/img'));
+    gulp.src([
+        'vendor/*',
+        'vendor/**/*',
+        'vendor/**/**/*'
+    ]).pipe(gulp.dest('../capstone-build/public/vendor'));
+});
 
 // Dev task with browserSync
 gulp.task('dev', ['browserSync', 'sass', 'minify-css', 'minify-js'], function() {
